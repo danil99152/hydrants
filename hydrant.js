@@ -22,7 +22,7 @@ function init () {
     myMap.geoObjects.add(objectManager);
 
     $.ajax({
-        url: "https://raw.githubusercontent.com/danil99152/YMap/master/data.json"
+        url: "data.json"
     }).done(function(data) {
         objectManager.add(data);
     });
