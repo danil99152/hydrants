@@ -13,7 +13,9 @@
    "properties":
    {
     "balloonContentHeader":"Адрес: ул. Пушкина, д. Колотушкина",
-    "balloonContentBody":["<b>Тип гидранта:<\/b> Надземный<br> <b>Дата последней проверки:<\/b> 01.02.2013<br> <b>Мощность гидранта:<\/b> 300 л\/мин<br> <b>Статус гидранта:<\/b> фун-т<br> <img src=\"images\/hydrant.png\" width=\"150\" height=\"200\"><br> <b>Примечание:<\/b> qwerty"]
+    "balloonContentBody":[
+     "href: hydrants/hydrant1"
+    ]
    }
   },
   {
@@ -27,7 +29,9 @@
    "properties":
    {
     "balloonContentHeader":"Адрес: ул. Такая-то, д. Такой-то",
-    "balloonContentBody":["<b>Тип гидранта:<\/b> подземный<br> <b>Дата последней проверки:<\/b> вчера<br> <b>Мощность гидранта:<\/b> мощная<br> <b>Статус гидранта:<\/b> не функ-т<br> <img src=\"images\/hydrant.png\" width=\"150\" height=\"200\"><br> <b>Примечание:<\/b> Может взорваться"]
+    "balloonContentBody":[
+     "href: hydrants/hydrant2"
+    ]
    }
   }
  ]
