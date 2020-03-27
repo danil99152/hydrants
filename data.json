@@ -4,7 +4,8 @@
  [
   {
   "type":"Feature",
-  "id":0,"geometry":
+  "id":0,
+  "geometry":
   {
    "type":"Point",
    "coordinates": [56.871331,53.190844]},
@@ -16,7 +17,8 @@
   },
   {
    "type":"Feature",
-   "id":1,"geometry":
+   "id":1,
+   "geometry":
   {
    "type":"Point",
    "coordinates":[56.865983,53.238309]},
