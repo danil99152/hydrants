@@ -3,35 +3,31 @@
  "features":
  [
   {
-   "type":"Feature",
-   "id":0,
-   "geometry":
-   {
-    "type":"Point",
-    "coordinates": [56.871331,53.190844]
-   },
+  "type":"Feature",
+  "id":0,
+  "geometry":
+  {
+   "type":"Point",
+   "coordinates": [56.871331,53.190844]
+  },
    "properties":
    {
     "balloonContentHeader":"Адрес: ул. Пушкина, д. Колотушкина",
-    "balloonContentBody":[
-     "href: hydrants/hydrant1"
-    ]
+    "balloonContentBody":["<b>Тип гидранта:<\/b> Надземный<br> <b>Дата последней проверки:<\/b> 01.02.2013<br> <b>Мощность гидранта:<\/b> 300 л\/мин<br> <b>Статус гидранта:<\/b> фун-т<br> <img src=\"images\/hydrant.png\" width=\"150\" height=\"200\"><br> <b>Примечание:<\/b> qwerty"]
    }
   },
   {
    "type":"Feature",
    "id":1,
    "geometry":
-   {
-    "type":"Point",
-    "coordinates":[56.865983,53.238309]
-   },
+  {
+   "type":"Point",
+   "coordinates":[56.865983,53.238309]
+  },
    "properties":
    {
     "balloonContentHeader":"Адрес: ул. Такая-то, д. Такой-то",
-    "balloonContentBody":[
-     "href: hydrants/hydrant2"
-    ]
+    "balloonContentBody":["<b>Тип гидранта:<\/b> подземный<br> <b>Дата последней проверки:<\/b> вчера<br> <b>Мощность гидранта:<\/b> мощная<br> <b>Статус гидранта:<\/b> не функ-т<br> <img src=\"images\/hydrant.png\" width=\"150\" height=\"200\"><br> <b>Примечание:<\/b> Может взорваться"]
    }
   }
  ]
