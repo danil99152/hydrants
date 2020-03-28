@@ -21,10 +21,19 @@ function init () {
     objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
     myMap.geoObjects.add(objectManager);
 
-    $.ajax({
-        url: "data.json"
-    }).done(function(data) {
+    var url = "data.json";
+
+    $.getJSON(url,function(data){
+        for (i = 0; i < data.features.length; i++) {
+            defaultObject = data.features[i].properties.balloonContentBody;
+            data.features[i].properties.balloonContentBody = [];
+            data.features[i].properties.balloonContentBody = "<b>Тип гидранта:</b> "+ defaultObject.type + "<br>"
+            + "<b>Дата последней проверки:</b> " + defaultObject.last_date + "<br>"
+            + "<b>Мощность гидранта:</b> " + defaultObject.power + "<br>"
+            + "<b>Статус гидранта:</b > " + defaultObject.status + "<br>"
+            + "<img src=\"images/" + defaultObject.img + "\" width=\"150\" height=\"200\"><br>"
+            + "<b>Примечание:</b> " + defaultObject.notation;
+        }
         objectManager.add(data);
     });
-
 }
