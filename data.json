@@ -8,41 +8,19 @@
    "geometry":
    {
     "type":"Point",
-    "coordinates": [56.871331,53.190844]
+    "coordinates": []
    },
    "properties":
    {
-    "balloonContentHeader":"Адрес: ул. Пушкина, д. Колотушкина",
+    "balloonContentHeader":"",
     "balloonContentBody":
     {
-     "type": "Надземный",
-     "last_date": "01.02.2013",
-     "power": "300",
-     "status": "фун-т",
-     "img": "hydrant.png",
-     "notation": "qwerty"
-    }
-   }
-  },
-  {
-   "type":"Feature",
-   "id":1,
-   "geometry":
-   {
-    "type":"Point",
-    "coordinates":[56.865983,53.238309]
-   },
-   "properties":
-   {
-    "balloonContentHeader":"Адрес: ул. Такая-то, д. Такой-то",
-    "balloonContentBody":
-    {
-     "type": "Подземный",
-     "last_date": "01.02.2014",
-     "power": "300",
-     "status": "нефун-т",
-     "img": "hydrant.png",
-     "notation": "qwerty"
+     "type": "",
+     "last_date": "",
+     "power": "",
+     "status": "",
+     "img": "",
+     "notation": ""
     }
    }
   }
