@@ -46,8 +46,6 @@ function init () {
             });
         }).done(function () {
             uniteData();
-        }).fail(function() {
-            console.log("Если это сообщение вышло дважды, то, возможно, проблема в синтаксисе нового json-файла");
         });
     }
     uniteData();
