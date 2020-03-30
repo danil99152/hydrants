@@ -17,11 +17,11 @@ function init () {
     objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
     myMap.geoObjects.add(objectManager);
 
-    let i = 0;
+    const areas = ["Industrialny", "Ustinovsky", "Leninsky", "Oktyabrsky", "Pervomaysky"];
     const macroUrl = "data.json";
-    function uniteData(){
+    function uniteData(area, i){
         i++;
-        let microUrl = "hydrants/" + i + ".json";
+        let microUrl = "Izhevsk/" + area + "/" + i + ".json";
         $.getJSON(microUrl, function (microData) {
             let coordinates = microData.coordinates;
             let address = microData.address;
@@ -45,8 +45,8 @@ function init () {
                 objectManager.add(macroData);
             });
         }).done(function () {
-            uniteData();
+            uniteData(area, i);
         });
     }
-    uniteData();
+    areas.forEach(area => uniteData(area, 0));
 }
