@@ -34,7 +34,7 @@ function init () {
             $.getJSON(macroUrl, function (macroData) {
                 macroData.features[0].id = i;
                 macroData.features[0].geometry.coordinates = coordinates;
-                macroData.features[0].properties.balloonContentHeader = address;
+                macroData.features[0].properties.balloonContentHeader = "Адрес: " + address;
                 macroData.features[0].properties.balloonContentBody = [];
                 macroData.features[0].properties.balloonContentBody = "<b>Тип гидранта:</b> " + type + "<br>"
                     + "<b>Дата последней проверки:</b> " + last_date + "<br>"
