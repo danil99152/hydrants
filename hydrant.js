@@ -19,6 +19,7 @@ function init () {
 
     const areas = ["Industrialny", "Ustinovsky", "Leninsky", "Oktyabrsky", "Pervomaysky"];
     const macroUrl = "data.json";
+    let id = 0;
     function uniteData(area, i){
         i++;
         let microUrl = "Izhevsk/" + area + "/" + i + ".json";
@@ -32,7 +33,8 @@ function init () {
             let img = microData.img;
             let notation = microData.notation;
             $.getJSON(macroUrl, function (macroData) {
-                macroData.features[0].id = i;
+                id++;
+                macroData.features[0].id = id;
                 macroData.features[0].geometry.coordinates = coordinates;
                 macroData.features[0].properties.balloonContentHeader = "Адрес: " + address;
                 macroData.features[0].properties.balloonContentBody = [];
