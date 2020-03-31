@@ -61,11 +61,11 @@ function init () {
     myMap.geoObjects.add(multiRoute);
 
     const areas = ["Industrialny", "Ustinovsky", "Leninsky", "Oktyabrsky", "Pervomaysky"];
-    const macroUrl = "https://raw.githubusercontent.com/danil99152/danil99152.github.io/master/data.json";
+    const macroUrl = "data.json";
     let id = 0;
     function uniteData(area, i){
         i++;
-        let microUrl = "https://raw.githubusercontent.com/danil99152/danil99152.github.io/master/Izhevsk/" + area + "/" + i + ".json";
+        let microUrl = "Izhevsk/" + area + "/" + i + ".json";
         $.getJSON(microUrl, function (microData) {
             let coordinates = microData.coordinates;
             let address = microData.address;
@@ -88,7 +88,6 @@ function init () {
                     + "<img src=\"images/" + img + "\" width=\"150\" height=\"200\"><br>"
                     + "<b>Примечание:</b> " + notation;
                 objectManager.add(macroData);
-                  //  console.log(id);
             });
         }).done(function () {
             uniteData(area, i);
