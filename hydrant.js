@@ -1,11 +1,25 @@
 ymaps.ready(init);
 
 function init () {
+    var multiRoute = new ymaps.multiRouter.MultiRoute({
+        referencePoints: [],
+        // Параметры маршрутизации.
+        params: {
+            // Ограничение на максимальное количество маршрутов, возвращаемое маршрутизатором.
+            results: 2
+        }
+    }, {
+        // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
+        boundsAutoApply: true
+    });
+
     let myMap = new ymaps.Map('map', {
             center: [56.849283, 53.205247],
-            zoom: 12
+            zoom: 12,
+            controls: ['zoomControl', 'searchControl', 'typeSelector', 'routeButtonControl']
         }, {
-            searchControlProvider: 'yandex#search'
+            searchControlProvider: 'yandex#search',
+            buttonMaxWidth: 200
         }),
         objectManager = new ymaps.ObjectManager({
             clusterize: true,
@@ -13,16 +27,45 @@ function init () {
             clusterDisableClickZoom: true
         });
 
+    // Создадим элемент управления "Пробки".
+    var trafficControl = new ymaps.control.TrafficControl({ state: {
+            providerKey: 'traffic#actual',
+            trafficShown: false
+        }});
+    // Добавим контрол на карту.
+    myMap.controls.add(trafficControl);
+    // Получим ссылку на провайдер пробок "Сейчас" и включим показ инфоточек.
+    trafficControl.getProvider('traffic#actual').state.set('infoLayerShown', true);
+
+    // Создаем кнопку для управления мультимаршрутом.
+    var trafficButton = new ymaps.control.Button({
+        data: { content: "Учитывать пробки" },
+        options: { selectOnClick: true }
+    });
+
+    // Объявляем обработчики для кнопок.
+    trafficButton.events.add('select', function () {
+        multiRoute.model.setParams({ avoidTrafficJams: true }, true);
+    });
+
+    trafficButton.events.add('deselect', function () {
+        multiRoute.model.setParams({ avoidTrafficJams: false }, true);
+    });
+
+    // Добавим контрол на карту.
+    myMap.controls.add(trafficButton);
+
     objectManager.objects.options.set('preset', 'islands#greenDotIcon');
     objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
     myMap.geoObjects.add(objectManager);
+    myMap.geoObjects.add(multiRoute);
 
     const areas = ["Industrialny", "Ustinovsky", "Leninsky", "Oktyabrsky", "Pervomaysky"];
-    const macroUrl = "data.json";
+    const macroUrl = "https://raw.githubusercontent.com/danil99152/danil99152.github.io/master/data.json";
     let id = 0;
     function uniteData(area, i){
         i++;
-        let microUrl = "Izhevsk/" + area + "/" + i + ".json";
+        let microUrl = "https://raw.githubusercontent.com/danil99152/danil99152.github.io/master/Izhevsk/" + area + "/" + i + ".json";
         $.getJSON(microUrl, function (microData) {
             let coordinates = microData.coordinates;
             let address = microData.address;
@@ -45,6 +88,7 @@ function init () {
                     + "<img src=\"images/" + img + "\" width=\"150\" height=\"200\"><br>"
                     + "<b>Примечание:</b> " + notation;
                 objectManager.add(macroData);
+                  //  console.log(id);
             });
         }).done(function () {
             uniteData(area, i);
