@@ -42,16 +42,13 @@ function init () {
         data: { content: "Учитывать пробки" },
         options: { selectOnClick: true }
     });
-
     // Объявляем обработчики для кнопок.
     trafficButton.events.add('select', function () {
         multiRoute.model.setParams({ avoidTrafficJams: true }, true);
     });
-
     trafficButton.events.add('deselect', function () {
         multiRoute.model.setParams({ avoidTrafficJams: false }, true);
     });
-
     // Добавим контрол на карту.
     myMap.controls.add(trafficButton);
 
