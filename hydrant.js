@@ -1,7 +1,7 @@
 ymaps.ready(init);
 
 function init () {
-    var multiRoute = new ymaps.multiRouter.MultiRoute({
+    let multiRoute = new ymaps.multiRouter.MultiRoute({
         referencePoints: [],
         // Параметры маршрутизации.
         params: {
@@ -28,19 +28,21 @@ function init () {
         });
 
     // Создадим элемент управления "Пробки".
-    var trafficControl = new ymaps.control.TrafficControl({ state: {
+    let trafficControl = new ymaps.control.TrafficControl({
+        state: {
             providerKey: 'traffic#actual',
             trafficShown: false
-        }});
+        }
+    });
     // Добавим контрол на карту.
     myMap.controls.add(trafficControl);
     // Получим ссылку на провайдер пробок "Сейчас" и включим показ инфоточек.
     trafficControl.getProvider('traffic#actual').state.set('infoLayerShown', true);
 
     // Создаем кнопку для управления мультимаршрутом.
-    var trafficButton = new ymaps.control.Button({
-        data: { content: "Учитывать пробки" },
-        options: { selectOnClick: true }
+    let trafficButton = new ymaps.control.Button({
+        data: {content: "Учитывать пробки"},
+        options: {selectOnClick: true}
     });
     // Объявляем обработчики для кнопок.
     trafficButton.events.add('select', function () {
@@ -73,8 +75,7 @@ function init () {
             let img = microData.img;
             let notation = microData.notation;
             $.getJSON(macroUrl, function (macroData) {
-                id++;
-                macroData.features[0].id = id;
+                macroData.features[0].id = id++;
                 macroData.features[0].geometry.coordinates = coordinates;
                 macroData.features[0].properties.balloonContentHeader = "Адрес: " + address;
                 macroData.features[0].properties.balloonContentBody = [];
