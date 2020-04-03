@@ -9,6 +9,6 @@
 6) Стаутус гидранта
 
 Пользователь может самостоятельно править информацию о уже созданном гидранте или указать на карте новый. 
-(Как это сделать)[instruction.md]
+[Как это сделать](instruction.md)
 
-[instruction.md]: https://github.com/danil99152/danil99152.github.io/blob/master/instruction.md
+
