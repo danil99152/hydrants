@@ -15,7 +15,7 @@
 
 ## Структура
 
-[Izhevsk][Пользовательская база данных]
+[Izhevsk](Пользовательская база данных)
 
 
 [Izhevsk]: https://github.com/danil99152/danil99152.github.io/tree/master/Izhevsk
