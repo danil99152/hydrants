@@ -22,7 +22,7 @@ function init () {
             buttonMaxWidth: 200
         }),
         objectManager = new ymaps.ObjectManager({
-            clusterize: true,
+            clusterize: false,
             gridSize: 32,
             clusterDisableClickZoom: true
         });
@@ -31,7 +31,7 @@ function init () {
     let trafficControl = new ymaps.control.TrafficControl({
         state: {
             providerKey: 'traffic#actual',
-            trafficShown: false
+            trafficShown: true
         }
     });
     // Добавим контрол на карту.
@@ -54,8 +54,6 @@ function init () {
     // Добавим контрол на карту.
     myMap.controls.add(trafficButton);
 
-    objectManager.objects.options.set('preset', 'islands#greenDotIcon');
-    objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
     myMap.geoObjects.add(objectManager);
     myMap.geoObjects.add(multiRoute);
 
