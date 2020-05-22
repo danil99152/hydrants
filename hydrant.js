@@ -59,10 +59,11 @@ function init () {
     myMap.geoObjects.add(objectManager);
     myMap.geoObjects.add(multiRoute);
 
+    //Создание меток гидранта
     const areas = ["Industrialny", "Ustinovsky", "Leninsky", "Oktyabrsky", "Pervomaysky"];
     const macroUrl = "data.json";
     let id = 0;
-    function uniteData(area, i){
+    function uniteHydrantData(area, i){
         i++;
         let microUrl = "Izhevsk/" + area + "/" + i + ".json";
         $.getJSON(microUrl, function (microData) {
@@ -88,8 +89,33 @@ function init () {
                 objectManager.add(macroData);
             });
         }).done(function () {
-            uniteData(area, i);
+            uniteHydrantData(area, i);
         });
     }
-    areas.forEach(area => uniteData(area, 0));
+    areas.forEach(area => uniteHydrantData(area, 0));
+
+    //Создание меток пожарных частей
+    const depUrl = "dep.json";
+    function uniteDepData(i){
+        i++;
+        let microUrl = "Izhevsk/Departments/" + i + ".json";
+        $.getJSON(microUrl, function (microData) {
+            let coordinates = microData.coordinates;
+            let address = microData.address;
+            let name = microData.name;
+            let img = microData.img;
+            $.getJSON(depUrl, function (macroData) {
+                macroData.features[0].id = id++;
+                macroData.features[0].geometry.coordinates = coordinates;
+                macroData.features[0].properties.balloonContentHeader = "Адрес: " + address;
+                macroData.features[0].properties.balloonContentBody = [];
+                macroData.features[0].properties.balloonContentBody = "<b>" + name + "</b><br>"
+                    + "<img src=\"images/" + img + "\" width=\"200\" height=\"150\">";
+                objectManager.add(macroData);
+            });
+        }).done(function () {
+            uniteDepData(i);
+        });
+    }
+    uniteDepData(0);
 }
