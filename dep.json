@@ -18,7 +18,8 @@
           "name": "",
           "img": ""
         }
-      }
+      },
+      "options": {"preset": "islands#blueGovernmentCircleIcon"}
     }
   ]
 }

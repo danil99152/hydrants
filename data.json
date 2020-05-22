@@ -22,7 +22,8 @@
      "img": "",
      "notation": ""
     }
-   }
+   },
+   "options": {"iconColor": "#ff0000"}
   }
  ]
 }
